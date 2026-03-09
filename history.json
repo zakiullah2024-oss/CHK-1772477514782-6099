@@ -1,0 +1,245 @@
+[
+    {
+        "disease": "Apple - Black rot",
+        "confidence": 23.28,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 30.8,
+        "humidity": 33,
+        "image_url": "/static/uploads/Apple Healthy.jpg",
+        "timestamp": "2026-02-20 01:02:20 PM"
+    },
+    {
+        "disease": "Strawberry - Leaf scorch",
+        "confidence": 56.13,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 30.8,
+        "humidity": 33,
+        "image_url": "/static/uploads/Cherry Healthy.jpg",
+        "timestamp": "2026-02-20 01:02:43 PM"
+    },
+    {
+        "disease": "Tomato - Early blight",
+        "confidence": 30.89,
+        "recommendation": "Apply Chlorothalonil or Copper fungicide. Remove infected leaves.",
+        "temperature": 30.8,
+        "humidity": 33,
+        "image_url": "/static/uploads/apple_scab.jpg",
+        "timestamp": "2026-02-20 01:03:09 PM"
+    },
+    {
+        "disease": "Potato - Early blight",
+        "confidence": 93.9,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 30.8,
+        "humidity": 33,
+        "image_url": "/static/uploads/apple-scab_02a.jpg",
+        "timestamp": "2026-02-20 01:08:41 PM"
+    },
+    {
+        "disease": "Potato - Early blight",
+        "confidence": 93.9,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.0,
+        "humidity": 32,
+        "image_url": "/static/uploads/apple-scab_02a.jpg",
+        "timestamp": "2026-02-20 01:21:51 PM"
+    },
+    {
+        "disease": "Potato - Early blight",
+        "confidence": 93.9,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.0,
+        "humidity": 32,
+        "image_url": "/static/uploads/apple-scab_02a.jpg",
+        "timestamp": "2026-02-20 01:29:48 PM"
+    },
+    {
+        "disease": "Apple - Apple scab",
+        "confidence": 99.57,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/5b74fa7a-008d-42b2-b8c0-07bd4642153a___FREC_Scab 3162_90deg.JPG",
+        "timestamp": "2026-02-20 01:30:48 PM"
+    },
+    {
+        "disease": "Corn (maize) - Cercospora leaf spot Gray leaf spot",
+        "confidence": 59.48,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/2f668a95-80ab-40ac-98ef-657bd85b668b___FREC_Scab 3247.JPG",
+        "timestamp": "2026-02-20 01:31:13 PM"
+    },
+    {
+        "disease": "Corn (maize) - Cercospora leaf spot Gray leaf spot",
+        "confidence": 59.48,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 30.1,
+        "humidity": 39,
+        "image_url": "/static/uploads/2f668a95-80ab-40ac-98ef-657bd85b668b___FREC_Scab 3247.JPG",
+        "timestamp": "2026-02-20 01:39:13 PM"
+    },
+    {
+        "disease": "Apple - Apple scab",
+        "confidence": 74.4,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/4a50158d-dcd0-4a1f-885e-2d9b16a4e344___FREC_Scab 3205.JPG",
+        "timestamp": "2026-02-20 01:39:47 PM"
+    },
+    {
+        "disease": "Apple - Apple scab",
+        "confidence": 63.36,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/2f668a95-80ab-40ac-98ef-657bd85b668b___FREC_Scab 3247_90deg.JPG",
+        "timestamp": "2026-02-20 01:40:18 PM"
+    },
+    {
+        "disease": "Apple - Cedar apple rust",
+        "confidence": 48.06,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/2f1e68c0-c059-46fd-bbf3-f160817abdc3___FREC_Scab 3535.JPG",
+        "timestamp": "2026-02-20 01:40:48 PM"
+    },
+    {
+        "disease": "Corn (maize) - Cercospora leaf spot Gray leaf spot",
+        "confidence": 59.48,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/2f668a95-80ab-40ac-98ef-657bd85b668b___FREC_Scab 3247.JPG",
+        "timestamp": "2026-02-20 01:41:16 PM"
+    },
+    {
+        "disease": "Apple - Apple scab",
+        "confidence": 37.85,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/0b344c16-456c-4085-aa61-6a1c4cb93632___RS_HL 2538_newPixel25.JPG",
+        "timestamp": "2026-02-20 01:43:27 PM"
+    },
+    {
+        "disease": "Apple - Apple scab",
+        "confidence": 37.85,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/0b344c16-456c-4085-aa61-6a1c4cb93632___RS_HL 2538_newPixel25.JPG",
+        "timestamp": "2026-02-20 01:43:30 PM"
+    },
+    {
+        "disease": "Blueberry - healthy",
+        "confidence": 97.44,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/0a0b8f78-df2d-4cfc-becf-cde10fa2766b___RS_HL 5487_flipTB.JPG",
+        "timestamp": "2026-02-20 01:44:09 PM"
+    },
+    {
+        "disease": "Blueberry - healthy",
+        "confidence": 99.11,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 31.2,
+        "humidity": 32,
+        "image_url": "/static/uploads/0acad158-32bf-4512-8f97-3b3856daffb5___RS_HL 0765.JPG",
+        "timestamp": "2026-02-20 01:44:46 PM"
+    },
+    {
+        "disease": "Blueberry - healthy",
+        "confidence": 45.44,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 31.4,
+        "humidity": 32,
+        "image_url": "/static/uploads/0acad158-32bf-4512-8f97-3b3856daffb5___RS_HL 0765_newPixel25.JPG",
+        "timestamp": "2026-02-20 01:45:03 PM"
+    },
+    {
+        "disease": "Blueberry - healthy",
+        "confidence": 85.84,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 31.4,
+        "humidity": 32,
+        "image_url": "/static/uploads/0bfbcb95-30cb-487c-b9b9-49e4edd4af9f___RS_HL 0534.JPG",
+        "timestamp": "2026-02-20 01:45:32 PM"
+    },
+    {
+        "disease": "Apple - Apple scab",
+        "confidence": 74.4,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.4,
+        "humidity": 32,
+        "image_url": "/static/uploads/4a50158d-dcd0-4a1f-885e-2d9b16a4e344___FREC_Scab 3205.JPG",
+        "timestamp": "2026-02-20 01:48:19 PM"
+    },
+    {
+        "disease": "Blueberry - healthy",
+        "confidence": 96.54,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 31.4,
+        "humidity": 32,
+        "image_url": "/static/uploads/d737d0b5-4c05-4d90-ab27-42f605b74896___RS_HL 0530.JPG",
+        "timestamp": "2026-02-20 01:48:43 PM"
+    },
+    {
+        "disease": "Tomato - Septoria leaf spot",
+        "confidence": 46.23,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.4,
+        "humidity": 32,
+        "image_url": "/static/uploads/1cf4f8fe-a820-4f3d-b69b-795e57e03a65___FAM_B.Rot 3438_flipLR.JPG",
+        "timestamp": "2026-02-20 01:57:58 PM"
+    },
+    {
+        "disease": "Grape - Black rot",
+        "confidence": 99.56,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 31.5,
+        "humidity": 32,
+        "image_url": "/static/uploads/0b9d95bb-51c7-40f1-8a4b-f9838becb418___FAM_B.Rot 0493_flipLR.JPG",
+        "timestamp": "2026-02-20 01:58:33 PM"
+    },
+    {
+        "disease": "Blueberry - healthy",
+        "confidence": 99.19,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 32.0,
+        "humidity": 32,
+        "image_url": "/static/uploads/0e637ba9-e568-4088-b448-7d4391b4f1b8___RS_HL 2506.JPG",
+        "timestamp": "2026-02-20 02:50:13 PM"
+    },
+    {
+        "disease": "Apple - healthy",
+        "confidence": 91.79,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 28.1,
+        "humidity": 51,
+        "image_url": "/static/uploads/0f6184c4-18d9-42c5-93d7-e9c4abe85560___RS_HL 7286.JPG",
+        "timestamp": "2026-02-20 07:16:22 PM"
+    },
+    {
+        "disease": "Apple - healthy",
+        "confidence": 91.79,
+        "recommendation": "Crop is healthy! Continue regular watering and proper fertilization.",
+        "temperature": 27.8,
+        "humidity": 52,
+        "image_url": "/static/uploads/0f6184c4-18d9-42c5-93d7-e9c4abe85560___RS_HL 7286.JPG",
+        "timestamp": "2026-02-20 07:35:28 PM"
+    },
+    {
+        "disease": "Strawberry - Leaf scorch",
+        "confidence": 73.12,
+        "recommendation": "Consult a local agricultural expert for exact pesticide measurements.",
+        "temperature": 35.0,
+        "humidity": 22,
+        "image_url": "/static/uploads/Strawberry Leaf Scorch.jpg",
+        "timestamp": "2026-03-09 05:19:10 PM"
+    }
+]

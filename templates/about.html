@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Smart Crop Advisory</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            background-color: #f4f9f4; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 🌟 Navbar Styling */
+        .navbar { transition: all 0.3s ease; }
+        .nav-link { transition: 0.3s ease; }
+        .nav-link:hover { transform: translateY(-2px); color: #ffc107 !important; }
+
+        /* 🚀 Hero Section with Glassmorphism */
+        .about-hero { 
+            background: linear-gradient(rgba(17, 23, 30, 0.75), rgba(30, 130, 76, 0.85)), url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&q=80') center/cover fixed;
+            color: white; 
+            padding: 120px 0 80px 0; 
+            text-align: center; 
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* 💡 Mission Cards */
+        .mission-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.4s ease;
+            border-left: 5px solid transparent;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .mission-card:hover {
+            transform: translateY(-10px);
+            border-left: 5px solid #198754;
+            box-shadow: 0 15px 35px rgba(25, 135, 84, 0.15);
+        }
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background-color: #e8f5e9;
+            color: #198754;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .mission-card:hover .icon-circle {
+            background-color: #198754;
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        /* 👨‍💻 Developer Profile Card */
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-align: center;
+            padding-bottom: 20px;
+            border: 1px solid #e8f5e9;
+        }
+        .profile-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(25, 135, 84, 0.2); border-color: #198754; }
+        .profile-header { background: #198754; height: 100px; }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-top: -60px;
+            object-fit: cover;
+            background-color: #f4f9f4;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 💻 Tech Stack Badges */
+        .tech-badge { font-size: 1rem; padding: 10px 20px; border-radius: 30px; margin: 5px; display: inline-block; transition: 0.3s; cursor: pointer; border: 2px solid transparent; }
+        .tech-badge:hover { transform: scale(1.1); border-color: #198754; background-color: #f8fff8; color: #198754 !important; }
+
+        /* ✉️ Contact Card */
+        .contact-card {
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 40px;
+            transition: 0.3s;
+        }
+        .contact-card:hover { background: #d1e7dd; transform: scale(1.02); }
+
+        /* 🌐 Footer */
+        .share { background-color: #11171e; color: white; text-align: center; padding: 3rem 1rem; margin-top: 50px; }
+        .apps { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+        .apps a { color: white; font-size: 1.5rem; background: rgba(255, 255, 255, 0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.3s; }
+        .apps a:hover { background: #198754; transform: translateY(-8px) rotate(360deg); box-shadow: 0 10px 20px rgba(25, 135, 84, 0.4); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow sticky-top animate__animated animate__fadeInDown">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">🌿 Smart Crop Advisory</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link fw-bold" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/predict">Predict Disease</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/info">Disease Info</a></li>
+                    <li class="nav-item"><a class="nav-link active text-warning fw-bold" href="/about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="about-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9 glass-box animate__animated animate__zoomIn">
+                    <h1 class="display-4 fw-bold mb-3"><i class="fa-solid fa-leaf text-success"></i> Our Vision</h1>
+                    <p class="lead mt-3 fs-4 text-light">To bridge the gap between advanced technology and agriculture, empowering small and marginal farmers with AI-driven insights for a better harvest.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 pt-4">
+        <div class="row g-4">
+            <div class="col-md-6 animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;">
+                <div class="mission-card">
+                    <div class="icon-circle"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <h3 class="fw-bold text-dark">The Problem</h3>
+                    <p class="text-muted fs-5 mt-3">Every year, farmers lose up to 40% of their crop yield due to unidentifiable plant diseases. Traditional expert consultation is time-consuming, expensive, and not easily accessible to rural farmers.</p>
+                </div>
+            </div>
+            <div class="col-md-6 animate__animated animate__fadeInRight" style="animation-delay: 0.4s;">
+                <div class="mission-card">
+                    <div class="icon-circle"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3 class="fw-bold text-dark">Our Solution</h3>
+                    <p class="text-muted fs-5 mt-3">We utilize cutting-edge **Deep Learning (CNN)** to diagnose plant diseases instantly from a simple smartphone photo. Our platform provides localized, actionable recommendations to save crops and increase profitability.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- 
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center fw-bold text-success mb-5 animate__animated animate__fadeInUp"><i class="fa-solid fa-code"></i> Project Head & Developer</h2>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6 animate__animated animate__zoomIn" style="animation-delay: 0.5s;">
+                <div class="profile-card">
+                    <div class="profile-header"></div>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ajay&backgroundColor=198754" alt="Ajay Savare" class="profile-img">
+                    
+                    <div class="card-body px-4 pt-3">
+                        <h3 class="fw-bold text-dark mb-1">Ajay Savare</h3>
+                        <span class="badge bg-success mb-3 px-3 py-2 fs-6">Lead AI Developer & Founder</span>
+                        
+                        <p class="text-muted mb-4 fs-6">
+                            A 3rd-year B.Tech CSE student specializing in Machine Learning and Web Technologies. 
+                            Dedicated to building scalable AI solutions that solve grassroots problems. 
+                            The architecture, Deep Learning models, and full-stack development of this 
+                            <b>Smart Crop Advisory System</b> were led and engineered by him to support local farmers.
+                        </p>
+                        
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="mailto:ajaysavare@example.com" class="btn btn-outline-danger rounded-circle" title="Email Me"><i class="fa-solid fa-envelope"></i></a>
+                            <a href="https://github.com/Yogita1811/" target="_blank" class="btn btn-outline-dark rounded-circle" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="btn btn-outline-primary rounded-circle" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container mt-5 pt-4 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="contact-card shadow-sm text-center border border-success">
+                    <i class="fa-solid fa-envelope-open-text fa-3x text-success mb-3 animate__animated animate__pulse animate__infinite"></i>
+                    <h3 class="fw-bold text-dark">Get in Touch</h3>
+                    <p class="text-muted fs-5 mb-4">Have questions about the AI model, want to suggest new features, or collaborate with us? Drop an email directly to the Project Head.</p>
+                    
+                    <a href="mailto:abc@example.com?subject=Inquiry%20regarding%20Smart%20Crop%20Advisory" class="btn btn-success btn-lg rounded-pill fw-bold shadow">
+                        <i class="fa-regular fa-paper-plane me-2"></i> Contact Head                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="share animate__animated animate__fadeInUp" style="animation-delay: 0.9s;">
+        <div class="container">
+            <h4 class="fw-bold text-success mb-2">Smart Crop Advisory System</h4>
+            <p class="small text-muted mb-4">Empowering farmers with Artificial Intelligence.</p>
+            <div class="apps">
+                <a href="https://web.whatsapp.com/" target="_blank" title="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://github.com/Yogita1811/" target="_blank" title="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank" title="Connect on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="mt-4 pt-3 border-top border-secondary small text-muted">
+                &copy; 2025 Developed by Ajay Savare. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

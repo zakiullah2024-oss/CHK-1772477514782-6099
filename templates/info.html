@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>38 Disease Encyclopedia - Smart Crop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { background-color: #f4f9f4; font-family: 'Segoe UI', sans-serif; }
+        .disease-card { transition: 0.3s; border: none; border-radius: 15px; cursor: pointer; background: white; height: 100%; }
+        .disease-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(25,135,84,0.3); }
+        .card-img-top { height: 160px;object-position: center; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: #e9ecef; }
+        .card-title { font-size: 0.85rem; font-weight: bold; color: #198754; margin-top: 5px; height: 40px; overflow: hidden; }
+        .search-box { border-radius: 30px; border: 2px solid #198754; padding: 12px 25px; font-size: 1.1rem; }
+        .modal-header { background-color: #198754; color: white; }
+        .modal-body img { border-radius: 12px; width: 100%; height: 280px; object-fit: cover; margin-bottom: 15px; }
+        .section-title { color: #198754; font-weight: bold; border-left: 4px solid #198754; padding-left: 10px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow no-print">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">🌿 Smart Crop Advisory</a>
+            <div class="ms-auto">
+                <a href="/" class="btn btn-outline-light btn-sm me-2">Home</a>
+                <a href="/predict" class="btn btn-outline-light btn-sm">Predict</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="text-center mb-4">
+            <h2 class="text-success fw-bold">Live Wikipedia Encyclopedia</h2>
+            <p class="text-muted">Fetching live data & images from Wikipedia servers.</p>
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-7">
+                    <input type="text" id="diseaseSearch" class="form-control search-box shadow-sm" placeholder="Search Crop or Disease..." onkeyup="filterDiseases()">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3" id="diseaseContainer">
+            </div>
+    </div>
+
+    <div class="modal fade" id="infoModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="m-title">Disease Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="m-img" src="">
+                    <h6 class="section-title">Description (माहिती)</h6>
+                    <p id="m-desc"></p>
+                    <h6 class="section-title">Control Measures (उपाय)</h6>
+                    <p id="m-reco"></p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <a id="m-link" href="#" target="_blank" class="btn btn-primary fw-bold shadow-sm">
+                        📖 Read More on Wikipedia
+                    </a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 🌐 No local images! We use 'wikiSlug' to fetch live images from Wikipedia API.
+        const diseases = [
+            // Apple
+            { name: "Apple Scab", crop: "Apple", desc: "पानांवर तपकिरी-काळे डाग पडतात.", reco: "Copper fungicide फवारा.", wikiSlug: "Apple_scab" },
+            { name: "Apple Black Rot", crop: "Apple", desc: "फळे सडतात आणि फांद्यांवर कॅन्कर होतो.", reco: "बाधित भाग छाटून टाका.", wikiSlug: "Botryosphaeria_obtusa" },
+            { name: "Apple Cedar Rust", crop: "Apple", desc: "पानांवर नारंगी ठिपके दिसतात.", reco: "बुरशीनाशक वापरा.", wikiSlug: "Gymnosporangium_juniperi-virginianae" },
+            { name: "Apple Healthy", crop: "Apple", desc: "सफरचंद पीक निरोगी आहे.", reco: "नियमित निगा राखा.", wikiSlug: "Apple" },
+            
+            // Blueberry, Cherry
+            { name: "Blueberry Healthy", crop: "Blueberry", desc: "ब्लूबेरी निरोगी आहे.", reco: "पाणी वेळेवर द्या.", wikiSlug: "Blueberry" },
+            { name: "Cherry Powdery Mildew", crop: "Cherry", desc: "पानांवर पांढरा थर जमा होतो.", reco: "सल्फर फवारणी करा.", wikiSlug: "Podosphaera_clandestina" },
+            { name: "Cherry Healthy", crop: "Cherry", desc: "चेरी निरोगी आहे.", reco: "योग्य खत द्या.", wikiSlug: "Cherry" },
+            
+            // Corn
+            // { name: "Corn Gray Leaf Spot", crop: "Corn", desc: "राखाडी रंगाचे ठिपके दिसतात.", reco: "पिकांची फेरपालट करा.", wikiSlug: "Gray_leaf_spot" },
+            { name: "Corn Common Rust", crop: "Corn", desc: "पानांवर तांबेरी फोड येतात.", reco: "Fungicide वापरा.", wikiSlug: "Puccinia_sorghi" },
+            { name: "Corn Northern Blight", crop: "Corn", desc: "मोठे सिगारसारखे डाग दिसतात.", reco: "बुरशीनाशक फवारा.", wikiSlug: "Northern_corn_leaf_blight" },
+            { name: "Corn Healthy", crop: "Corn", desc: "मका पीक निरोगी आहे.", reco: "वेळेवर पाणी द्या.", wikiSlug: "Maize" },
+            
+            // Grape
+            { name: "Grape Black Rot", crop: "Grape", desc: "द्राक्षाचे मणी सडून सुकतात.", reco: "बाधित मणी काढून टाका.", wikiSlug: "Guignardia_bidwellii" },
+            { name: "Grape Esca", crop: "Grape", desc: "पानांवर वाघाच्या पट्ट्यांसारखे डाग येतात.", reco: "छाटणी वेळेवर करा.", wikiSlug: "Esca_(grape_disease)" },
+            // { name: "Grape Leaf Blight", crop: "Grape", desc: "पाने कडांनी जळतात.", reco: "कॉपर फवारणी करा.", wikiSlug: "Grapevine_leaf_blight" },
+            { name: "Grape Healthy", crop: "Grape", desc: "द्राक्ष वेल निरोगी आहे.", reco: "छाटणी करा.", wikiSlug: "Grape" },
+            
+            // Orange, Peach, Pepper
+            { name: "Orange Greening", crop: "Orange", desc: "पाने पिवळी होऊन झाड मरते.", reco: "झाड उपटून टाका.", wikiSlug: "Citrus_greening_disease" },
+            // { name: "Peach Bacterial Spot", crop: "Peach", desc: "पानांवर छिद्रे पडतात.", reco: "झिंक फवारणी करा.", wikiSlug: "Xanthomonas_campestris_pv._pruni" },
+            { name: "Peach Healthy", crop: "Peach", desc: "पीच निरोगी आहे.", reco: "निगा राखा.", wikiSlug: "Peach" },
+            // { name: "Pepper Bacterial Spot", crop: "Pepper", desc: "पानांवर लहान ओले ठिपके येतात.", reco: "हवा खेळती ठेवा.", wikiSlug: "Xanthomonas_euvesicatoria" },
+            { name: "Pepper Healthy", crop: "Pepper", desc: "मिरची निरोगी आहे.", reco: "योग्य खत द्या.", wikiSlug: "Bell_pepper" },
+            
+            // Potato
+            { name: "Potato Early Blight", crop: "Potato", desc: "तपकिरी गोल ठिपके दिसतात.", reco: "बुरशीनाशक वापरा.", wikiSlug: "Alternaria_solani" },
+            { name: "Potato Late Blight", crop: "Potato", desc: "पाने वेगाने सडतात.", reco: "Mancozeb फवारा.", wikiSlug: "Phytophthora_infestans" },
+            { name: "Potato Healthy", crop: "Potato", desc: "बटाटा निरोगी आहे.", reco: "मातीची भर द्या.", wikiSlug: "Potato" },
+            
+            // Soybean, Squash, Strawberry
+            { name: "Soybean Healthy", crop: "Soybean", desc: "सोयाबीन निरोगी आहे.", reco: "कीड नियंत्रण ठेवा.", wikiSlug: "Soybean" },
+            { name: "Squash Mildew", crop: "Squash", desc: "पानांवर पांढरा थर येतो.", reco: "बुरशीनाशक वापरा.", wikiSlug: "Powdery_mildew" },
+            { name: "Strawberry Leaf Scorch", crop: "Strawberry", desc: "पाने जळाल्यासारखी दिसतात.", reco: "स्वच्छता राखा.", wikiSlug: "Diplocarpon_earlianum" },
+            { name: "Strawberry Healthy", crop: "Strawberry", desc: "स्ट्रॉबेरी निरोगी आहे.", reco: "मल्चिंग करा.", wikiSlug: "Strawberry" },
+
+            // Tomato
+            { name: "Tomato Bacterial Spot", crop: "Tomato", desc: "पानांवर काळे ठिपके येतात.", reco: "कॉपर फवारा.", wikiSlug: "Xanthomonas_campestris_pv._vesicatoria" },
+            { name: "Tomato Early Blight", crop: "Tomato", desc: "पानांवर गोल कडे असलेले ठिपके येतात.", reco: "बुरशीनाशक वापरा.", wikiSlug: "Alternaria_solani" },
+            { name: "Tomato Late Blight", crop: "Tomato", desc: "झाड काळे पडून सडते.", reco: "हवामान दमट असल्यास काळजी घ्या.", wikiSlug: "Phytophthora_infestans" },
+            { name: "Tomato Leaf Mold", crop: "Tomato", desc: "पानांखाली पिवळा/तपकिरी थर येतो.", reco: "व्हेंटिलेशन सुधारा.", wikiSlug: "Passalora_fulva" },
+            //{ name: "Tomato Septoria Spot", crop: "Tomato", desc: "पानांवर पांढऱ्या केंद्राचे ठिपके येतात.", reco: "खालील पाने काढून टाका.", wikiSlug: "Septoria_lycopersici" },
+            { name: "Tomato Spider Mites", crop: "Tomato", desc: "बारीक जाळी आणि कोळी दिसतात.", reco: "कडुलिंब तेल वापरा.", wikiSlug: "Tetranychus_urticae" },
+            { name: "Tomato Target Spot", crop: "Tomato", desc: "मोठे तपकिरी ठिपके येतात.", reco: "बुरशीनाशक वापरा.", wikiSlug: "Corynespora_cassiicola" },
+            { name: "Tomato Yellow Curl Virus", crop: "Tomato", desc: "पाने पिवळी होऊन वळतात.", reco: "माशी नियंत्रण करा.", wikiSlug: "Tomato_yellow_leaf_curl_virus" },
+            { name: "Tomato Mosaic Virus", crop: "Tomato", desc: "पानांवर पिवळे चट्टे पडतात.", reco: "झाड नष्ट करा.", wikiSlug: "Tobacco_mosaic_virus" },
+            { name: "Tomato Healthy", crop: "Tomato", desc: "टोमॅटो निरोगी आहे.", reco: "वेळेवर खते द्या.", wikiSlug: "Tomato" }
+        ];
+
+        const container = document.getElementById('diseaseContainer');
+
+        function loadCards(data) {
+            let htmlContent = '';
+            
+            data.forEach((d, i) => {
+                const imgId = "img-" + i;
+                // Loading Placeholder before Wiki Image arrives
+                htmlContent += `
+                    <div class="col-6 col-md-3 animate__animated animate__fadeInUp" style="animation-delay: ${Math.min(i * 0.05, 0.5)}s">
+                        <div class="card disease-card shadow-sm" onclick="openModal('${d.name}', '${d.desc}', '${d.reco}', '${d.wikiSlug}', document.getElementById('${imgId}').src)">
+                            <img id="${imgId}" src="https://placehold.co/400x300/198754/FFFFFF/png?text=Loading..." class="card-img-top" alt="${d.name}">
+                            <div class="card-body p-2 text-center">
+                                <span class="badge bg-success mb-1 small">${d.crop}</span>
+                                <div class="card-title">${d.name}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = htmlContent;
+
+            // 🌐 Fetch Images from Wikipedia API Dynamically!
+            data.forEach((d, i) => {
+                fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${d.wikiSlug}`)
+                    .then(response => response.json())
+                    .then(wikiData => {
+                        const imgEl = document.getElementById("img-" + i);
+                        if (wikiData.thumbnail && wikiData.thumbnail.source) {
+                            imgEl.src = wikiData.thumbnail.source;
+                        } else {
+                            // If Wikipedia doesn't have an image for this specific disease
+                            imgEl.src = `https://placehold.co/400x300/198754/FFFFFF/png?text=${d.crop}`;
+                        }
+                    })
+                    .catch(() => {
+                        document.getElementById("img-" + i).src = `https://placehold.co/400x300/198754/FFFFFF/png?text=${d.crop}`;
+                    });
+            });
+        }
+
+        function openModal(title, desc, reco, wikiSlug, imgSrc) {
+            document.getElementById('m-title').innerText = title;
+            document.getElementById('m-img').src = imgSrc;
+            document.getElementById('m-desc').innerText = desc;
+            document.getElementById('m-reco').innerText = reco;
+            
+            // Set exact Wikipedia Link for the Read More button
+            document.getElementById('m-link').href = `https://en.wikipedia.org/wiki/${wikiSlug}`;
+            
+            new bootstrap.Modal(document.getElementById('infoModal')).show();
+        }
+
+        function filterDiseases() {
+            const val = document.getElementById('diseaseSearch').value.toLowerCase();
+            const filtered = diseases.filter(d => d.name.toLowerCase().includes(val) || d.crop.toLowerCase().includes(val));
+            loadCards(filtered);
+        }
+
+        // Initialize the magic
+        loadCards(diseases);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
