@@ -22,7 +22,17 @@ LABELS_PATH = 'class_indices.json'
 HISTORY_FILE = 'history.json'
 
 print("Loading Model... Please wait.")
-model = tf.keras.models.load_model(MODEL_PATH)
+# Compatibility shim: some saved models include a 'groups' key
+# in DepthwiseConv2D config which newer/older Keras versions don't accept.
+from tensorflow.keras import layers as _layers
+class DepthwiseConv2D_Compat(_layers.DepthwiseConv2D):
+    def __init__(self, *args, **kwargs):
+        kwargs.pop('groups', None)
+        super().__init__(*args, **kwargs)
+
+custom_objects = { 'DepthwiseConv2D': DepthwiseConv2D_Compat }
+# Load without compilation to avoid optimizer deserialization issues
+model = tf.keras.models.load_model(MODEL_PATH, compile=False, custom_objects=custom_objects)
 
 # 🚀 SMART LABEL LOADER: Fixes Label Mismatch Issues!
 with open(LABELS_PATH, 'r') as f:
