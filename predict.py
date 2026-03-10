@@ -47,7 +47,7 @@ def predict_disease(img_path):
     print(f"Prediction  : {disease_name}")
     print(f"Confidence  : {confidence:.2f}%")
     print("="*50 + "\n")
-
+    # this is for print the those values
 # --- Main Execution ---
 if __name__ == "__main__":
     print("Ready for prediction!")
