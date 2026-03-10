@@ -55,7 +55,7 @@ with open('class_indices.json', 'w') as f:
 print("Disease names successfully saved to 'class_indices.json'.")
 
 # --- 3. Building the Transfer Learning Model (MobileNetV2 🚀) ---
-print("Downloading MobileNetV2 Base Model...")
+print("Downloading MobileNetV2 Base Model...")# Download pretrained MobileNetV2 model
 base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 base_model.trainable = False # Freeze the base model to train faster
 
