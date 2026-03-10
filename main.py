@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing import image
 import json
 import os
 import shutil
-import requests
+import requests #requ lib
 from datetime import datetime
 
 app = FastAPI()
